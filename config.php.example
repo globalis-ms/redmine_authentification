@@ -1,0 +1,15 @@
+<?php
+
+// Redmine base url
+define('REDMINE_URL', 'http://redmine.org');
+
+// Http request timeout (in sec)
+define('HTTP_TIMEOUT', 2);
+
+$IP_WHITE_LIST = [
+    '192.168.1.30'
+];
+
+$IP_BLACK_LIST = [
+
+];

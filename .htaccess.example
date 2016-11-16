@@ -1,0 +1,6 @@
+Options -Indexes
+# Rewrite rules
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^ redmine_auth.php  [env=HTTP_AUTHORIZATION:%{HTTP:Authorization},QSA,L]
+</IfModule>
