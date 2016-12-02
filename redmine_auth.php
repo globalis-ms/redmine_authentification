@@ -48,6 +48,17 @@ if (is_dir($_SERVER['SCRIPT_FILENAME'])) {
 }
 
 if (file_exists($_SERVER['SCRIPT_FILENAME'])) {
+    // Set mime type
+    $mimes = include __DIR__ . '/mime.php';
+    $info = pathinfo($_SERVER['SCRIPT_FILENAME']);
+    if (isset($info['extension']) && isset($mimes[$info['extension']])) {
+        $contentType = $mimes[$info['extension']];
+        if (is_array($contentType)) {
+            $contentType = current($contentType);
+        }
+        header('Content-Type: ' . $contentType);
+    }
+
     echo file_get_contents($_SERVER['SCRIPT_FILENAME']);
 } else {
     header('HTTP/1.0 404 Not Found');
